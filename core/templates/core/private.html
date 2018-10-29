@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+{% if not friends.count %}
+    Сочувствуем, похоже у вас совсем нет друзей.
+{% else %}
+    <h3>Ваши друзья (всего их: {{ friends.count }})</h3>
+    {% for friend in friends.items %}
+        <p>
+            <img src="{{ friend.photo_50 }}">
+            {{ friend.first_name }}
+            {% if friend.nickname %}
+            «{{ friend.nickname }}»
+            {% endif %}
+            {{ friend.last_name }}
+        </p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
